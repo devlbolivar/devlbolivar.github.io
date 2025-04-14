@@ -1,0 +1,15 @@
+Imágenes requeridas para el sitio web de ClimaBethel:
+
+1. climabethel-logo.png - Logo de la empresa
+   - Un logo profesional con colores azules fríos
+   - Dimensiones sugeridas: 200x60px
+
+2. hero-bg.jpg - Imagen de fondo para la sección principal
+   - Imagen de alta calidad de equipos de refrigeración/climatización o técnicos trabajando
+   - Dimensiones sugeridas: 1920x1080px
+
+3. technician.jpg - Imagen para la sección Nosotros
+   - Foto profesional de un técnico trabajando en equipos
+   - Dimensiones sugeridas: 600x400px
+
+Por favor, agregue estas imágenes a este directorio para completar el diseño del sitio web. 

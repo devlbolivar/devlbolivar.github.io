@@ -1,0 +1,16 @@
+ARCHIVOS DE FAVICON PENDIENTES
+
+Los siguientes archivos de favicon deben ser generados y colocados en esta carpeta:
+
+- favicon.ico
+- favicon-16x16.png
+- favicon-32x32.png
+- apple-touch-icon.png
+- android-chrome-192x192.png
+- android-chrome-512x512.png
+
+Puedes usar el archivo favicon-template.svg como base para crear estos archivos.
+Consulta el archivo README.txt para obtener instrucciones detalladas sobre cómo generar estos archivos.
+
+Una buena opción es utilizar un generador en línea como https://realfavicongenerator.net/ 
+subiendo el archivo favicon-template.svg y descargando todos los formatos necesarios. 
