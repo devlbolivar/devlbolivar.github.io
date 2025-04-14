@@ -109,41 +109,69 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Get form data
-      const formData = new FormData(this);
-      const formValues = {};
+      // Mostrar indicador de carga
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      submitButton.disabled = true;
 
-      for (let [key, value] of formData.entries()) {
-        formValues[key] = value;
-      }
+      // Recopilar datos del formulario para EmailJS
+      const templateParams = {
+        from_name: document.getElementById("name").value,
+        reply_to: document.getElementById("email").value,
+        phone_number: document.getElementById("phone").value,
+        service_needed: document.getElementById("service").value,
+        message: document.getElementById("message").value,
+        to_email: "luisbolivar515@gmail.com",
+      };
 
-      // Here you would typically send the form data to a server
-      // For demo purposes, we'll just show a success message
+      // Enviar correo electrónico usando EmailJS
+      emailjs.send("service_93ox926", "service_93ox926", templateParams).then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
 
-      // Create success message element
-      const successMessage = document.createElement("div");
-      successMessage.className = "success-message";
-      successMessage.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <h3>¡Gracias por contactarnos!</h3>
-                <p>Hemos recibido su solicitud y nos pondremos en contacto con usted a la brevedad.</p>
-            `;
+          // Restablecer formulario
+          contactForm.reset();
 
-      // Replace form with success message
-      contactForm.innerHTML = "";
-      contactForm.appendChild(successMessage);
+          // Mostrar mensaje de éxito
+          const successMessage = document.createElement("div");
+          successMessage.className = "success-message";
+          successMessage.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <h3>¡Gracias por contactarnos!</h3>
+            <p>Hemos recibido su solicitud y nos pondremos en contacto con usted a la brevedad.</p>
+          `;
 
-      // Style the success message
-      successMessage.style.textAlign = "center";
-      successMessage.style.padding = "2rem";
-      successMessage.style.color = "var(--primary-dark-blue)";
+          // Reemplazar formulario con mensaje de éxito
+          contactForm.innerHTML = "";
+          contactForm.appendChild(successMessage);
 
-      const icon = successMessage.querySelector("i");
-      if (icon) {
-        icon.style.fontSize = "3rem";
-        icon.style.color = "var(--accent-green)";
-        icon.style.marginBottom = "1rem";
-      }
+          // Estilos del mensaje de éxito
+          successMessage.style.textAlign = "center";
+          successMessage.style.padding = "2rem";
+          successMessage.style.color = "var(--primary-dark-blue)";
+
+          const icon = successMessage.querySelector("i");
+          if (icon) {
+            icon.style.fontSize = "3rem";
+            icon.style.color = "var(--accent-green)";
+            icon.style.marginBottom = "1rem";
+          }
+        },
+        function (error) {
+          console.log("FAILED...", error);
+
+          // Restaurar botón de envío
+          submitButton.innerHTML = originalButtonText;
+          submitButton.disabled = false;
+
+          // Mostrar mensaje de error
+          alert(
+            "Lo sentimos, hubo un problema al enviar su mensaje. Por favor, intente nuevamente o contáctenos directamente por teléfono."
+          );
+        }
+      );
     });
   }
 
