@@ -36,6 +36,7 @@ Este documento explica cómo configurar EmailJS para hacer funcional el formular
 5. Busca la línea: `emailjs.send('service_id', 'template_id', templateParams)`
 6. Reemplaza `'service_id'` con el ID de tu servicio de correo.
 7. Reemplaza `'template_id'` con el ID de tu plantilla.
+8. Asegúrate de que el correo de destino (to_email) sea "contacto@climabethel.cl"
 
 ## Limitaciones y consideraciones
 

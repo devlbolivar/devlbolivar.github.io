@@ -9,12 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.toggle("active");
 
       if (nav) {
-        nav.style.display = nav.style.display === "block" ? "none" : "block";
+        nav.classList.toggle("active");
       }
 
       if (contactInfo) {
-        contactInfo.style.display =
-          contactInfo.style.display === "flex" ? "none" : "flex";
+        contactInfo.classList.toggle("active");
       }
     });
   }
@@ -123,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         phone_number: document.getElementById("phone").value,
         service_needed: document.getElementById("service").value,
         message: document.getElementById("message").value,
-        to_email: "luisbolivar515@gmail.com",
+        to_email: "contacto@climabethel.cl",
       };
 
       // Enviar correo electrónico usando EmailJS
